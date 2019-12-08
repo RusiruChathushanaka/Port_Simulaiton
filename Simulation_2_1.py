@@ -304,3 +304,5 @@ with pd.ExcelWriter('output.xlsx') as writer:  # doctest: +SKIP
     to_JCT.to_excel(writer, sheet_name='to_JCT')
     to_CICT.to_excel(writer, sheet_name='to_CICT')
     to_SAGT.to_excel(writer, sheet_name='to_SAGT')
+
+print("Done")
