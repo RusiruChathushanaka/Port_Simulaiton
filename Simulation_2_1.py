@@ -98,7 +98,7 @@ class Prime_Mover(object):
                     self.next_terminal = "SAGT"
                 else:
                     print("No Next Terminal from Park...")
-                self.env.timeout(np.random.randint(2,10))
+                yield self.env.timeout(np.random.randint(2,10))
                 self.current_terminal = self.next_terminal
                 print("ooooooooooooooooooooooooooooooooooo")
 
@@ -110,7 +110,7 @@ class Prime_Mover(object):
                 print("Start Terminal - ",self.start_terminal)
                 print("End Terminal - ",self.end_terminal)
 
-                env.process(self.terminal_loading(env))
+                yield self.env.process(self.terminal_loading(env))
                 # self.terminal_loading(env)
 
                 print("Current Terminal - ",self.current_terminal)
@@ -118,10 +118,10 @@ class Prime_Mover(object):
                 print("Start Terminal - ",self.start_terminal)
                 print("End Terminal - ",self.end_terminal)
 
-                env.process(self.moving(env))
+                yield self.env.process(self.moving(env))
                 # self.moving(env)
 
-                env.process(self.terminal_unloading(env))
+                yield self.env.process(self.terminal_unloading(env))
                 # self.terminal_unloading(env)
 
                 print(env.now)
